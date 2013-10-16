@@ -11,25 +11,47 @@ class Fraccion
   end
   
   def to_s    
-   puts "La expresión es: #{@n}/#{@d}"
    a=gcd(@n,@d)
    puts "La expresión en su mínima expresión es: #{@n/a}/#{@d/a}"      
+  end
+  
+  def +(other)
+    if(@d == other.d)
+    Fraccion.new(@n+other.n,@d)
+    else
+    Fraccion.new((@n*other.d)+(@d*other.n),(@d*other.d))
+    end
+    
+  end
+  
+   def -(other)
+    if(@d == other.d)
+    Fraccion.new(@n+other.n,@d)
+    else
+    Fraccion.new((@n*other.d)-(@d*other.n),(@d*other.d))
+    end
+    
   end
   
   def *(other)
     Fraccion.new(@n*other.n,@d*other.d)
   end
   
-  def entre(other)
+  def /(other)
   Fraccion.new(@n*other.d,@d*other.n)
   end
 
   
 end
 
-p1=Fraccion.new(10,3)
-p2=Fraccion.new(40,2)
+p1, p2=Fraccion.new(3,2), Fraccion.new(5,4)
 p3=p1*p2
+p4=p1/p2
+p5=p1+p2
+p6=p1-p2
 p1.to_s
 p2.to_s
 p3.to_s
+p4.to_s
+p5.to_s
+p6.to_s
